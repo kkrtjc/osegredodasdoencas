@@ -318,55 +318,35 @@
             color: #111827;
         }
 
-        .carousel-wrapper {
-            max-width: 100%;
-            margin: 0 auto;
-            overflow: hidden; /* Esconde o que estiver fora */
-            position: relative;
-            padding: 0 20px;
-        }
-
         .benefits-grid {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            padding-bottom: 1rem;
-            width: max-content; /* Permite que todos os cards fiquem na mesma linha */
-            /* animation: scroll-carousel 40s linear infinite; /* Animação de rolagem */ */ flex-wrap: nowrap; /* Força que não haja quebra de linha */
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-
-
-
-
-        .benefit-card {
-            /* ... (manter estilos existentes) ... */
-            flex-shrink: 0; /* Impede que os cards diminuam */
-            width: 250px; /* Largura ainda mais reduzida para cada card */
-        }
-
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
             .benefits-grid {
-                gap: 1rem;
-                flex-wrap: wrap; /* Permite que os cards quebrem a linha em telas menores */
-                justify-content: center;
+                grid-template-columns: repeat(2, 1fr);
             }
+        }
 
-            .benefit-card {
-                width: 100%; /* Ocupa a largura total em mobile */
+        @media (max-width: 640px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
             }
         }
 
         .benefit-card {
             background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
-            padding: 1.5rem; /* Padding reduzido */
+            padding: 2rem;
             border-radius: 1rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             border-left: 5px solid #ea580c;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            flex-shrink: 0; /* Adicionado para garantir que não encolha */
-            width: 250px; /* Largura ainda mais reduzida para cada card */
         }
 
             .benefit-card::before {
@@ -446,32 +426,16 @@
                 font-size: 1.125rem;
             }
 
-        .testimonials-wrapper {
-            max-width: 100%;
-            margin: 0 auto;
-            overflow: hidden; /* Esconde o que estiver fora */
-            position: relative;
+        .testimonials-list {
+            display: grid;
+            grid-template-columns: 1fr; /* Default for mobile */
+            gap: 1.5rem;
             margin-bottom: 3rem;
         }
 
-        .testimonials-list {
-            display: flex;
-            gap: 1.5rem;
-            width: max-content; /* Permite que todos os cards fiquem na mesma linha */
-            animation: scroll-testimonials 50s linear infinite; /* Animação de rolagem */
-        }
-
-            .testimonials-list:hover {
-                animation-play-state: paused; /* Pausa ao passar o mouse */
-            }
-
-        @keyframes scroll-testimonials {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
+        @media (min-width: 768px) {
+            .testimonials-list {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns for desktop/tablet */
             }
         }
 
@@ -482,8 +446,6 @@
             padding: 1.5rem;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s;
-            flex-shrink: 0; /* Impede que os cards diminuam */
-            width: 280px; /* Largura reduzida para cada card */
         }
 
             .testimonial-card:hover {
@@ -889,46 +851,43 @@
         <div class="benefits-container">
             <h2>O que você vai aprender</h2>
 
-            <div class="carousel-wrapper">
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <div class="benefit-icon">⚡</div>
-                        <h3>Identificar doenças em 5 minutos</h3>
-                        <p>Tabelas visuais e sintomas claros para diagnóstico rápido e preciso do seu plantel</p>
-                        <div class="benefit-value">ECONOMIA: Até 10h/mês em pesquisa</div>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">💊</div>
-                        <h3>Tratar com confiança</h3>
-                        <p>Protocolos testados na prática por mais de 10 anos com taxa de sucesso comprovada, Medicamentos que realmente funcionam</p>
-                        <div class="benefit-value">RESULTADO: 95% de efetividade</div>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">🛡️</div>
-                        <h3>Prevenir perdas</h3>
-                        <p>Manejo sanitário passo a passo para manter seu plantel 100% saudável</p>
-                        <div class="benefit-value">PROTEÇÃO: Zero perdas</div>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">💰</div>
-                        <h3>Economizar dinheiro</h3>
-                        <p>Reduz custos com veterinário e medicamentos que nao funcionam em até 70% ao ano</p>
-                        <div class="benefit-value">ECONOMIA: R$ 2.000+/ano</div>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">📈</div>
-                        <h3>Aumentar produção</h3>
-                        <p>Galinhas saudáveis produzem mais ovos e de melhor qualidade</p>
-                        <div class="benefit-value">AUMENTO: +40% de produção</div>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">📋</div>
-                        <h3>Ter referência sempre</h3>
-                        <p>Checklist e calendário de vacinação para nunca esquecer nada importante</p>
-                        <div class="benefit-value">PRATICIDADE: Acesso 24/7</div>
-                    </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Identificar doenças em 5 minutos</h3>
+                    <p>Tabelas visuais e sintomas claros para diagnóstico rápido e preciso do seu plantel</p>
+                    <div class="benefit-value">ECONOMIA: Até 10h/mês em pesquisa</div>
                 </div>
-
+                <div class="benefit-card">
+                    <div class="benefit-icon">💊</div>
+                    <h3>Tratar com confiança</h3>
+                    <p>Protocolos testados na prática por mais de 10 anos com taxa de sucesso comprovada, Medicamentos que realmente funcionam</p>
+                    <div class="benefit-value">RESULTADO: 95% de efetividade</div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3>Prevenir perdas</h3>
+                    <p>Manejo sanitário passo a passo para manter seu plantel 100% saudável</p>
+                    <div class="benefit-value">PROTEÇÃO: Zero perdas</div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Economizar dinheiro</h3>
+                    <p>Reduz custos com veterinário e medicamentos que nao funcionam em até 70% ao ano</p>
+                    <div class="benefit-value">ECONOMIA: R$ 2.000+/ano</div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📈</div>
+                    <h3>Aumentar produção</h3>
+                    <p>Galinhas saudáveis produzem mais ovos e de melhor qualidade</p>
+                    <div class="benefit-value">AUMENTO: +40% de produção</div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📋</div>
+                    <h3>Ter referência sempre</h3>
+                    <p>Checklist e calendário de vacinação para nunca esquecer nada importante</p>
+                    <div class="benefit-value">PRATICIDADE: Acesso 24/7</div>
+                </div>
             </div>
         </div>
     </section>
@@ -941,16 +900,11 @@
                 <p>Veja o que outros criadores estão dizendo</p>
             </div>
 
-            <div class="testimonials-wrapper">
-                <div class="testimonials-list" id="testimonials-list">
-                    <!-- Testimonials will be inserted here by JavaScript -->
-                </div>
-                <div class="testimonials-list" id="testimonials-list-duplicate" aria-hidden="true">
-                    <!-- Duplicata para rolagem infinita -->
-                </div>
+            <div class="testimonials-list" id="testimonials-list">
+                <!-- Testimonials will be inserted here by JavaScript -->
             </div>
 
-            <button class="show-more-btn" id="show-more-btn" onclick="showMoreTestimonials()" style="display: none;">
+            <button class="show-more-btn" id="show-more-btn" onclick="showMoreTestimonials()">
                 Ver mais depoimentos ▼
             </button>
         </div>
@@ -1011,7 +965,7 @@
                 name: "Maria Santos",
                 location: "São Paulo",
                 text: "Muito bom, Consegui identificar a doença da minha galinha na mesma hora e tratei direitinho.",
-                avatar: "images/maria.png"
+                avatar: "images/Maria.png"
             },
             {
                 name: "João Oliveira",
@@ -1091,34 +1045,34 @@
 
         function renderTestimonials() {
             const list = document.getElementById('testimonials-list');
-            const duplicate = document.getElementById('testimonials-list-duplicate');
-            const visibleCount = testimonials.length; /* Renderiza todos para o carrossel */
+            const visibleCount = showAll ? testimonials.length : 6;
 
-            const html = testimonials.slice(0, visibleCount).map(t => `
-                                <div class="testimonial-card">
-                                    <div class="testimonial-header">
-                                        <img src="${t.avatar}" alt="${t.name}" class="testimonial-avatar">
-                                        <div class="testimonial-info">
-                                            <h4>${t.name}</h4>
-                                            <p>• ${t.location}</p>
-                                        </div>
-                                    </div>
-                                    <div class="stars">
-                                        <span class="star">★</span>
-                                        <span class="star">★</span>
-                                        <span class="star">★</span>
-                                        <span class="star">★</span>
-                                        <span class="star">★</span>
-                                    </div>
-                                    <p class="testimonial-text">"${t.text}"</p>
-                                </div>
-                            `).join('');
-
-            list.innerHTML = html;
-            duplicate.innerHTML = html; /* Duplica para rolagem infinita */
+            list.innerHTML = testimonials.slice(0, visibleCount).map(t => `
+                                                                <div class="testimonial-card">
+                                                                    <div class="testimonial-header">
+                                                                        <img src="${t.avatar}" alt="${t.name}" class="testimonial-avatar">
+                                                                        <div class="testimonial-info">
+                                                                            <h4>${t.name}</h4>
+                                                                            <p>• ${t.location}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="stars">
+                                                                        <span class="star">★</span>
+                                                                        <span class="star">★</span>
+                                                                        <span class="star">★</span>
+                                                                        <span class="star">★</span>
+                                                                        <span class="star">★</span>
+                                                                    </div>
+                                                                    <p class="testimonial-text">"${t.text}"</p>
+                                                                </div>
+                                                            `).join('');
 
             const btn = document.getElementById('show-more-btn');
-            btn.style.display = 'none'; /* Esconde o botão */
+            if (showAll) {
+                btn.style.display = 'none';
+            } else {
+                btn.style.display = 'block';
+            }
         }
 
         function showMoreTestimonials() {
@@ -1205,3 +1159,4 @@
     <!-- End Video Autoplay Script -->
 </body>
 </html>
+>
